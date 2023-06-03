@@ -6,7 +6,6 @@ $CUSTOM_COLOR_VALUES = @("27ed01", "ed01ec", "ed8301", "017ced", "f1f400") #Gree
 function set_custom_screen_saver {
     Set-ItemProperty -Path $HKEY_DISPLAY_STRING_PATH -Name "RotationSpeed" -Value 1          
     Set-ItemProperty -Path $HKEY_DISPLAY_STRING_PATH -Name "RotationStyle" -Value 0
-    Set-ItemProperty -Path $HKEY_DISPLAY_STRING_PATH -Name "SurfaceType" -Value 1
     Set-ItemProperty -Path $HKEY_DISPLAY_STRING_PATH -Name "Size" -Value "a" #10
     Set-ItemProperty -Path $HKEY_DISPLAY_STRING_PATH -Name "FontFace" -Value "Comic Sans MS"
 
@@ -18,6 +17,9 @@ function set_custom_screen_saver {
     $WEEKDAY = $todays_date.DayOfWeek
 
     Set-ItemProperty -Path $HKEY_DISPLAY_STRING_PATH -Name "SurfaceColor" -Value $(Get-Random -InputObject $CUSTOM_COLOR_VALUES)
+    Set-ItemProperty -Path $HKEY_DISPLAY_STRING_PATH -Name "SurfaceType" -Value 1
+    Set-ItemProperty -Path $HKEY_DISPLAY_STRING_PATH -Name "UseCustomColor" -Value 1
+
     Set-ItemProperty -Path $HKEY_DISPLAY_STRING_PATH -Name "DisplayString" -Value "$DAY/$MONTH $WEEKDAY"  
 }
 
